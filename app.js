@@ -7,11 +7,11 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 
 //Providing path for our static files.
-app.use(express.static(__dirname + "public"));
+app.use(express.static(__dirname + "/public"));
 
 
 app.get("/", function(req, res) {
-    res.sendFile(__dirname + "/index.html")
+    res.sendFile(__dirname + "/public/index.html")
 });
 
 app.post("/", function(req, res) {
@@ -37,15 +37,15 @@ app.post("/", function(req, res) {
 
     const options = {
         method: "POST",
-        auth: "afaq1:2eb35a85015e26816533eace8c78202b-us21"
+        auth: "afaq1:760cbb96b2acb7ab5961b40160a89cca-us21"
     };
 
     const request = https.request(url, options, function(response) {
 
         if (response.statusCode === 200) {
-            res.sendFile(__dirname + "/success.html")
+            res.sendFile(__dirname + "/public/success.html")
         } else {
-            res.sendFile(__dirname + "/failure.html")
+            res.sendFile(__dirname + "/public/failure.html")
         }
 
         response.on("data", function(data) {
